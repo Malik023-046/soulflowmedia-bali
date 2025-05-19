@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOUFLOWMEDIA.BALI - Agência de Modelos</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;700&family=Playfair+Display:wght@700&display=swap');
+
+        :root {
+            --primary-color: #00796b; /* Teal escuro */
+            --secondary-color: #f9a825; /* Amarelo mostarda/dourado */
+            --accent-color: #e65100; /* Laranja queimado */
+            --light-bg: #f5f5f5; /* Cinza claro para fundos */
+            --dark-text: #212121; /* Texto escuro */
+            --light-text: #ffffff;
+            --header-font: 'Playfair Display', serif;
+            --body-font: 'Montserrat', sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--body-font);
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+            color: var(--dark-text);
+            line-height: 1.8;
+            overflow-x: hidden; /* Evitar scroll horizontal */
+        }
+
+        header {
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://via.placeholder.com/1920x800.png?text=Bali+Sunset+Vibes') no-repeat center center/cover;
+            color: var(--light-text);
+            padding: 60px 0;
+            text-align: center;
+            position: relative;
+            min-height: 70vh; /* Altura maior para o header */
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        header h1 {
+            margin: 0 0 10px 0;
+            font-family: var(--header-font);
+            font-size: 4.5rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+        
+        header p.subtitle {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            font-weight: 300;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.7);
+        }
+
+        nav {
+            background-color: rgba(0, 0, 0, 0.7); /* Fundo semi-transparente para o menu */
+            padding: 15px 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            width: 100%;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
+        nav ul {
+            padding: 0;
+            list-style: none;
+            text-align: center;
+            margin: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 25px;
+        }
+
+        nav ul li a {
+            color: var(--light-text);
+            text-decoration: none;
+            font-size: 1.1rem;
+            font-weight: 400;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        nav ul li a:hover, nav ul li a.active {
+            color: var(--secondary-color);
+            transform: scale(1.1);
+        }
+
+        .container {
+            width: 85%;
+            max-width: 1200px;
+            margin: 40px auto;
+            overflow: hidden;
+            padding: 30px 20px;
+            background-color: var(--light-text);
+            box-shadow: 0 0 20px rgba(0,0,0,0.1);
+            border-radius: 8px;
+        }
+
+        section {
+            padding: 60px 0;
+        }
+        
+        section:nth-child(even) .container {
+            /* background-color: #e0f2f1; /* Leve tom alternado para seções */
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 40px;
+            font-family: var(--header-font);
+            font-size: 2.8rem;
+            color: var(--primary-color);
+            position: relative;
+        }
+
+        h2::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--secondary-color);
+            margin: 10px auto 0;
+            border-radius: 2px;
+        }
+        
+        .hero-content {
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero-content p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px auto;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--secondary-color);
+            color: var(--dark-text);
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+
+        .cta-button:hover {
+            background-color: var(--accent-color);
+            color: var(--light-text);
+            transform: translateY(-3px);
+        }
+
+        /* Portfolio Section */
+        #portfolio .portfolio-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .portfolio-item {
+            background-color: #fff;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .portfolio-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+        }
+
+        .portfolio-item img {
+            width: 100%;
+            height: 350px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .portfolio-item .info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .portfolio-item .info h3 {
+            margin-top: 0;
+            margin-bottom: 10px;
+            font-family: var(--header-font);
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+        
+        .portfolio-item .info p {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* About Us Section */
+        #about p, #contact p {
+            font-size: 1.1rem;
+            text-align: center;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            margin-bottom: 20px;
+        }
+
+        /* Contact Section */
+        .contact-info {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .contact-info p {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+        .contact-info a {
+            color: var(--primary-color);
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .contact-info a:hover {
+            color: var(--accent-color);
+        }
+
+        form.contact-form {
+            max-width: 600px;
+            margin: 30px auto 0 auto;
+            padding: 20px;
+            background-color: #f9f9f9;
+            border-radius: 8px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: var(--primary-color);
+        }
+
+        .form-group input[type="text"],
+        .form-group input[type="email"],
+        .form-group textarea {
+            width: calc(100% - 20px); /* Adjust for padding */
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-family: var(--body-font);
+            font-size: 1rem;
+        }
+        
+        .form-group textarea {
+            min-height: 120px;
+            resize: vertical;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: var(--primary-color);
+            color: var(--light-text);
+            padding: 12px 25px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: var(--accent-color);
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            background: var(--dark-text);
+            color: var(--light-bg);
+            margin-top: 40px;
+        }
+        footer p {
+            margin: 0;
+            font-size: 0.9rem;
+        }
+
+        /* Modal for Portfolio Item */
+        .modal {
+            display: none; 
+            position: fixed; 
+            z-index: 2000; 
+            left: 0;
+            top: 0;
+            width: 100%; 
+            height: 100%; 
+            overflow: auto; 
+            background-color: rgba(0,0,0,0.85);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            max-width: 80%;
+            max-height: 80%;
+            animation-name: zoom;
+            animation-duration: 0.4s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0.5)}
+            to {transform:scale(1)}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 25px;
+            right: 45px;
+            color: #fff;
+            font-size: 50px;
+            font-weight: bold;
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .close-modal:hover,
+        .close-modal:focus {
+            color: #bbb;
+            text-decoration: none;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 3rem;
+            }
+            header p.subtitle {
+                font-size: 1.2rem;
+            }
+            nav ul li {
+                margin: 0 10px;
+            }
+            nav ul li a {
+                font-size: 1rem;
+            }
+            .container {
+                width: 95%;
+            }
+            h2 {
+                font-size: 2.2rem;
+            }
+            #portfolio .portfolio-grid {
+                grid-template-columns: 1fr; /* Stack items on smaller screens */
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <header id="home">
+        <h1>SOUFLOWMEDIA.BALI</h1>
+        <p class="subtitle">Elevando Talentos. Criando Ícones. Em Bali.</p>
+        <a href="#portfolio" class="cta-button">Descubra Nossos Modelos</a>
+    </header>
+
+    <nav id="main-nav">
+        <ul>
+            <li><a href="#home" class="active">Início</a></li>
+            <li><a href="#portfolio">Portfólio</a></li>
+            <li><a href="#about">Sobre Nós</a></li>
+            <li><a href="#contact">Contato</a></li>
+        </ul>
+    </nav>
+
+    <section id="welcome" class="container hero-content">
+         <h2>Bem-vindos à SOUFLOWMEDIA.BALI</h2>
+        <p>A sua porta de entrada para o mundo da moda em Bali. Conectamos talentos excecionais com marcas visionárias, impulsionando carreiras e definindo o futuro da moda na ilha dos deuses.</p>
+        <a href="#contact" class="cta-button">Fale Conosco</a>
+    </section>
+
+    <section id="portfolio">
+        <div class="container">
+            <h2>Nosso Portfólio</h2>
+            <div class="portfolio-grid">
+                <div class="portfolio-item" data-img-src="https://via.placeholder.com/800x1000.png?text=Modelo+1+-+Ayu">
+                    <img src="https://via.placeholder.com/400x500.png?text=Modelo+1+-+Ayu" alt="Modelo Ayu">
+                    <div class="info">
+                        <h3>Ayu Lestari</h3>
+                        <p>Versátil e expressiva, Ayu brilha em editoriais e passarelas.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-img-src="https://via.placeholder.com/800x1000.png?text=Modelo+2+-+Bagus">
+                    <img src="https://via.placeholder.com/400x500.png?text=Modelo+2+-+Bagus" alt="Modelo Bagus">
+                    <div class="info">
+                        <h3>Bagus Wijaya</h3>
+                        <p>Com um olhar marcante, Bagus é ideal para campanhas de lifestyle.</p>
+                    </div>
+                </div>
+                <div class="portfolio-item" data-img-src="https://via.placeholder.com/800x1000.png?text=Modelo+3+-+Citra">
+                    <img src="https://via.placeholder.com/400x500.png?text=Modelo+3+-+Citra" alt="Modelo Citra">
+                    <div class="info">
+                        <h3>Citra Dewi</h3>
+                        <p>Elegância natural, perfeita para alta-costura e beleza.</p>
+                    </div>
+                </div>
+                 <div class="portfolio-item" data-img-src="https://via.placeholder.com/800x1000.png?text=Modelo+4+-+Deva">
+                    <img src="https://via.placeholder.com/400x500.png?text=Modelo+4+-+Deva" alt="Modelo Deva">
+                    <div class="info">
+                        <h3>Deva Putra</h3>
+                        <p>Atitude e presença forte para moda urbana e desportiva.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <div id="imageModal" class="modal">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modalImage">
+    </div>
+
+    <section id="about">
+        <div class="container">
+            <h2>Sobre Nós</h2>
+            <p>A SOUFLOWMEDIA.BALI é mais do que uma agência; somos uma família que nutre e promove talentos no coração vibrante de Bali. Fundada com a paixão por descobrir e elevar modelos excecionais, nossa missão é impulsionar carreiras e criar conexões autênticas na indústria da moda global, a partir da beleza única e da energia inspiradora de Bali. Acreditamos na individualidade, na diversidade e no poder de uma imagem para contar uma história.</p>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="container">
+            <h2>Entre em Contato</h2>
+            <div class="contact-info">
+                <p>Pronto para colaborar ou fazer parte da nossa agência? Adoraríamos ouvir de si!</p>
+                <p>Email: <a href="mailto:contato@souflowmedia.bali">contato@souflowmedia.bali</a></p>
+                <p>Telefone: <a href="tel:+62123456789">+62 123 456 789</a> (Bali, Indonésia)</p>
+                <p>Siga-nos nas redes sociais: @souflowmedia.bali</p>
+            </div>
+            <form class="contact-form" id="contactForm">
+                <div class="form-group">
+                    <label for="name">Nome Completo:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="subject">Assunto:</label>
+                    <input type="text" id="subject" name="subject" required>
+                </div>
+                <div class="form-group">
+                    <label for="message">Mensagem:</label>
+                    <textarea id="message" name="message" required></textarea>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Enviar Mensagem" class="cta-button">
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; <span id="currentYear"></span> SOUFLOWMEDIA.BALI. Todos os direitos reservados.</p>
+        <p>Design Interativo por Manus AI</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Site SOUFLOWMEDIA.BALI carregado e pronto para interações avançadas!');
+
+            // Smooth scrolling for nav links
+            const navLinks = document.querySelectorAll('nav ul li a[href^="#"]');
+            navLinks.forEach(link => {
+                link.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    let targetId = this.getAttribute('href');
+                    let targetElement = document.querySelector(targetId);
+                    if (targetElement) {
+                        // Considerar a altura do header fixo
+                        const headerOffset = document.getElementById('main-nav').offsetHeight + 20;
+                        const elementPosition = targetElement.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: "smooth"
+                        });
+                        // Atualizar classe ativa
+                        navLinks.forEach(nav => nav.classList.remove('active'));
+                        this.classList.add('active');
+                    }
+                });
+            });
+            
+            // Active link highlighting on scroll
+            const sections = document.querySelectorAll('section[id]');
+            window.addEventListener('scroll', () => {
+                let current = '';
+                sections.forEach(section => {
+                    const sectionTop = section.offsetTop;
+                    const sectionHeight = section.clientHeight;
+                    if (pageYOffset >= (sectionTop - document.getElementById('main-nav').offsetHeight - 50)) {
+                        current = section.getAttribute('id');
+                    }
+                });
+
+                navLinks.forEach(link => {
+                    link.classList.remove('active');
+                    if (link.getAttribute('href').substring(1) === current) {
+                        link.classList.add('active');
+                    }
+                });
+                // Se estiver no topo, marcar o link 'Início' como ativo
+                if (pageYOffset < sections[0].offsetTop - 200) {
+                     navLinks.forEach(link => link.classList.remove('active'));
+                     document.querySelector('nav ul li a[href="#home"]').classList.add('active');
+                }
+            });
+
+            // Portfolio Item Click Modal
+            const portfolioItems = document.querySelectorAll('.portfolio-item');
+            const modal = document.getElementById('imageModal');
+            const modalImg = document.getElementById('modalImage');
+            const closeModal = document.querySelector('.close-modal');
+
+            portfolioItems.forEach(item => {
+                item.addEventListener('click', function() {
+                    modal.style.display = "flex";
+                    modalImg.src = this.dataset.imgSrc; 
+                });
+            });
+
+            closeModal.onclick = function() {
+                modal.style.display = "none";
+            }
+
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal.style.display = "none";
+                }
+            }
+            
+            // Form submission (basic)
+            const contactForm = document.getElementById('contactForm');
+            if(contactForm) {
+                contactForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    // Aqui iria a lógica de envio do formulário (ex: AJAX)
+                    alert('Obrigado pela sua mensagem! Entraremos em contato em breve.');
+                    contactForm.reset();
+                });
+            }
+
+            // Set current year in footer
+            document.getElementById('currentYear').textContent = new Date().getFullYear();
+            
+            // Simple fade-in animation for sections on scroll
+            const animatedSections = document.querySelectorAll('section .container');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                        // observer.unobserve(entry.target); // Descomente para animar apenas uma vez
+                    }
+                });
+            }, { threshold: 0.1 });
+
+            animatedSections.forEach(section => {
+                section.style.opacity = 0;
+                section.style.transform = 'translateY(30px)';
+                section.style.transition = 'opacity 0.8s ease-out, transform 0.8s ease-out';
+                observer.observe(section);
+            });
+
+        });
+    </script>
+</body>
+</html>
